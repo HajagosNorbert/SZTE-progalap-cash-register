@@ -3,4 +3,4 @@ project(progalap C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(progalap main.c beolvaso.c item.h beolvaso.h)
+add_executable(progalap main.c beolvaso.c item.h item.c beolvaso.h)
