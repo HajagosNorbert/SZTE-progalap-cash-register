@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Fajka/Desktop/Egyetem2.felev/progalap/main.c" "C:/Users/Fajka/Desktop/Egyetem2.felev/progalap/cmake-build-debug/CMakeFiles/progalap.dir/main.c.obj"
+  "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/beolvaso.c" "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/progalap.dir/beolvaso.c.obj"
+  "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/main.c" "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/progalap.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

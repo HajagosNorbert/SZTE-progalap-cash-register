@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/progalap.dir/beolvaso.c.obj"
   "CMakeFiles/progalap.dir/main.c.obj"
   "libprogalap.dll.a"
   "progalap.exe"

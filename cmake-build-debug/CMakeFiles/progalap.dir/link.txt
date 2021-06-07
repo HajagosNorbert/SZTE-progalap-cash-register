@@ -1,3 +1,3 @@
-"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\progalap.dir/objects.a
-C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\progalap.dir/objects.a @CMakeFiles\progalap.dir\objects1.rsp
-C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\progalap.dir/objects.a -Wl,--no-whole-archive  -o progalap.exe -Wl,--out-implib,libprogalap.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\progalap.dir\linklibs.rsp
+"C:\Program Files\JetBrains\CLion 2021.1.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\progalap.dir/objects.a
+C:\PROGRA~1\CODEBL~1\MinGW\bin\ar.exe cr CMakeFiles\progalap.dir/objects.a @CMakeFiles\progalap.dir\objects1.rsp
+C:\PROGRA~1\CODEBL~1\MinGW\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\progalap.dir/objects.a -Wl,--no-whole-archive -o progalap.exe -Wl,--out-implib,libprogalap.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\progalap.dir\linklibs.rsp
