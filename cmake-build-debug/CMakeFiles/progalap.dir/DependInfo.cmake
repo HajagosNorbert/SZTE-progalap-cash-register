@@ -1,16 +1,16 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/beolvaso.c" "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/progalap.dir/beolvaso.c.obj"
-  "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/main.c" "C:/Users/Asus/CLionProjects/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/progalap.dir/main.c.obj"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/beolvaso.c" "CMakeFiles/progalap.dir/beolvaso.c.o" "gcc" "CMakeFiles/progalap.dir/beolvaso.c.o.d"
+  "/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/item.c" "CMakeFiles/progalap.dir/item.c.o" "gcc" "CMakeFiles/progalap.dir/item.c.o.d"
+  "/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/main.c" "CMakeFiles/progalap.dir/main.c.o" "gcc" "CMakeFiles/progalap.dir/main.c.o.d"
   )
 
 # Targets to which this target links.

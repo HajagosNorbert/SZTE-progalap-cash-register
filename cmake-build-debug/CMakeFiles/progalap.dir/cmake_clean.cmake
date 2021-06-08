@@ -1,9 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/progalap.dir/beolvaso.c.obj"
-  "CMakeFiles/progalap.dir/main.c.obj"
-  "libprogalap.dll.a"
-  "progalap.exe"
-  "progalap.exe.manifest"
+  "CMakeFiles/progalap.dir/beolvaso.c.o"
+  "CMakeFiles/progalap.dir/beolvaso.c.o.d"
+  "CMakeFiles/progalap.dir/item.c.o"
+  "CMakeFiles/progalap.dir/item.c.o.d"
+  "CMakeFiles/progalap.dir/main.c.o"
+  "CMakeFiles/progalap.dir/main.c.o.d"
+  "progalap"
   "progalap.pdb"
 )
 

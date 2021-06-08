@@ -2,17 +2,28 @@
 // Created by Asus on 6/5/2021.
 //
 
-#ifndef UNTITLED1_ITEM_H
-#define UNTITLED1_ITEM_H
+//Péter
+#ifndef ITEM_H
+#define ITEM_H
 
-#include <stdio.h>
-
-typedef struct itemType {
+//a fix 20-as mérettel csinálni kell valamit.
+typedef struct item {
     char name[20];
     int price;
     int count;
-} itemType;
+} item;
 
-void printItem(itemType item);
+//Norbert
+typedef struct itemNode {
+    item *item;
+    struct itemNode *next;
+} itemNode;
 
-#endif //UNTITLED1_ITEM_H
+//Péter
+void printItem(item item);
+
+//Norbert
+int countItems(itemNode *head);
+void addItem(itemNode *head, item *item);
+
+#endif //ITEM_H
