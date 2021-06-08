@@ -17,7 +17,6 @@ char values[9][4] = {{32},
                      {'p', 'q', 'r', 's'},
                      {'t', 'u', 'v'},
                      {'w', 'x', 'y', 'z'}};
-item items[20];
 
 void printKeyboard(char *msg) {
     printf("%s\n", msg);
@@ -53,10 +52,11 @@ int checkInputPriceQuan(char row[]) {
     return 1;
 }
 
-item *beolvaso() {
-
+itemNode *beolvaso() {
+    //Norbert
+    itemNode *head;
+    //Péter
     item i1;
-    int numberOfItems = 0;
     int ok;
     int x;
     int printer = 0;
@@ -133,19 +133,20 @@ item *beolvaso() {
             if (strcmp(row, "ok") == 0) {
                 ok = 0;
                 x = 0;
-                printItem(i1);
+                printItem(&i1);
             } else {
                 i1.count = atoi(row);
             }
         }
 
         if (printer == 0) {
-            items[numberOfItems] = i1;
-            numberOfItems++;
+            //Norbert
+            addItem(head, &i1);
+            //Péter
             x = 0;
             ok = 1;
         }
     }
 
-    return items;
+    return head;
 }

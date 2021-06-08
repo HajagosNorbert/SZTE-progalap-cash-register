@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printItem(item item) {
-    printf("%s X %d %d Ft\n", item.name, item.count, item.price);
+void printItem(item *item) {
+    printf("%s X %d %d Ft\n", item->name, item->count, item->price);
 }
 
 //Norbert

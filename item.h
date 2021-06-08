@@ -20,7 +20,7 @@ typedef struct itemNode {
 } itemNode;
 
 //Péter
-void printItem(item item);
+void printItem(item *item);
 
 //Norbert
 int countItems(itemNode *head);

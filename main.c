@@ -4,10 +4,15 @@
 #include "item.h"
 
 int main() {
-    item *cuccok;
-    cuccok = beolvaso();
-    for (int i = 0; i < 2; i++) {
-        printItem(cuccok[i]);
+    //Norbert
+    itemNode *firstItem;
+    firstItem = beolvaso();
+
+    itemNode *current = firstItem;
+    while (current != NULL) {
+        printItem(current->item);
+        current = current->next;
     }
+    printf("%d", countItems(firstItem));
     return 0;
 }
