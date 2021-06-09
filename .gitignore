@@ -2,3 +2,4 @@ cmake-build-debug/
 .vscode/
 .idea/
 /run.sh
+/buildebug.sh
