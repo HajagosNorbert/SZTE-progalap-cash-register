@@ -6,7 +6,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-//a fix 20-as mérettel csinálni kell valamit.
 typedef struct item {
     char name[20];
     int price;
@@ -15,7 +14,7 @@ typedef struct item {
 
 //Norbert
 typedef struct itemNode {
-    item *item;
+    item item;
     struct itemNode *next;
 } itemNode;
 
@@ -24,6 +23,6 @@ void printItem(item *item);
 
 //Norbert
 int countItems(itemNode *head);
-void addItem(itemNode *head, item *item);
+void addItem(itemNode **head, item item);
 
 #endif //ITEM_H

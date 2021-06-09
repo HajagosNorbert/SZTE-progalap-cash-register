@@ -5,6 +5,7 @@
 #include "item.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void printItem(item *item) {
     printf("%s X %d %d Ft\n", item->name, item->count, item->price);
@@ -24,14 +25,24 @@ int countItems(itemNode *head) {
     return itemCount;
 }
 
-void addItem(itemNode *head, item *item) {
-    itemNode *current = head;
+void addItem(itemNode **head, item item) {
+    itemNode *temp, *ptr;
+    temp = (itemNode *)malloc(sizeof(itemNode));
+    // temp->item = item;
+    temp->item.count = item.count;
+    temp->item.price = item.price;
+    strcpy(temp->item.name, item.name);
+    // memcpy(&item.name, &(temp->item.name), sizeof(item.name));
+    temp->next = NULL;
 
-    while (current != NULL) {
-        current = current->next;
+    if (*head == NULL) {
+        *head = temp;
+        return;
     }
 
-    current = (itemNode *)malloc(sizeof(itemNode));
-    current->item = item;
-    current->next = NULL;
+    ptr = *head;
+    while (ptr->next != NULL) {
+        ptr = ptr->next;
+    }
+    ptr->next = temp;
 }
