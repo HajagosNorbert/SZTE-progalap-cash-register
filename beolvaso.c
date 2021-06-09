@@ -52,7 +52,7 @@ int checkInputPriceQuan(char row[]) {
     return 1;
 }
 
-itemNode *beolvaso() {
+itemNode beolvaso() {
     //Norbert
     itemNode *head;
     //Péter
@@ -138,15 +138,15 @@ itemNode *beolvaso() {
                 i1.count = atoi(row);
             }
         }
-
         if (printer == 0) {
             //Norbert
-            addItem(head, &i1);
+            addItem(&head, i1);
             //Péter
             x = 0;
             ok = 1;
         }
     }
-
-    return head;
+    //Norbert
+    return *head;
+    //Péter
 }
