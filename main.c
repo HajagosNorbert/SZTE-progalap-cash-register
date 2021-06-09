@@ -2,17 +2,12 @@
 
 #include "beolvaso.h"
 #include "item.h"
+#include "kiir.h"
 
 int main() {
     //Norbert
-    itemNode *firstItem;
+    itemNode firstItem;
     firstItem = beolvaso();
-
-    itemNode *current = firstItem;
-    while (current != NULL) {
-        printItem(current->item);
-        current = current->next;
-    }
-    printf("%d", countItems(firstItem));
+    printOutList(&firstItem);
     return 0;
 }
