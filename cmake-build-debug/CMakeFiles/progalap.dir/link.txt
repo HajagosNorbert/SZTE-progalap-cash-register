@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/progalap.dir/main.c.o CMakeFiles/progalap.dir/beolvaso.c.o CMakeFiles/progalap.dir/item.c.o -o progalap 
+/usr/bin/cc -g CMakeFiles/progalap.dir/main.c.o CMakeFiles/progalap.dir/beolvaso.c.o CMakeFiles/progalap.dir/item.c.o CMakeFiles/progalap.dir/kiir.c.o -o progalap 

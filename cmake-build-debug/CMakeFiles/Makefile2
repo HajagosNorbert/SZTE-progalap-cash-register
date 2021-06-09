@@ -81,12 +81,12 @@ clean: CMakeFiles/progalap.dir/clean
 CMakeFiles/progalap.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target progalap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target progalap"
 .PHONY : CMakeFiles/progalap.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/progalap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/progalap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/progalap.dir/rule

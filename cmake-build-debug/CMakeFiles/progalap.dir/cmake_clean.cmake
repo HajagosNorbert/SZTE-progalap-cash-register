@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/progalap.dir/beolvaso.c.o.d"
   "CMakeFiles/progalap.dir/item.c.o"
   "CMakeFiles/progalap.dir/item.c.o.d"
+  "CMakeFiles/progalap.dir/kiir.c.o"
+  "CMakeFiles/progalap.dir/kiir.c.o.d"
   "CMakeFiles/progalap.dir/main.c.o"
   "CMakeFiles/progalap.dir/main.c.o.d"
   "progalap"

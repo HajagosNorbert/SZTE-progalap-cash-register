@@ -177,6 +177,30 @@ item.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/item.c.s
 .PHONY : item.c.s
 
+kiir.o: kiir.c.o
+.PHONY : kiir.o
+
+# target to build an object file
+kiir.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.o
+.PHONY : kiir.c.o
+
+kiir.i: kiir.c.i
+.PHONY : kiir.i
+
+# target to preprocess a source file
+kiir.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.i
+.PHONY : kiir.c.i
+
+kiir.s: kiir.c.s
+.PHONY : kiir.s
+
+# target to generate assembly for a file
+kiir.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.s
+.PHONY : kiir.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... item.o"
 	@echo "... item.i"
 	@echo "... item.s"
+	@echo "... kiir.o"
+	@echo "... kiir.i"
+	@echo "... kiir.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
