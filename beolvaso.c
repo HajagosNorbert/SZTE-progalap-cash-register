@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <CUnit/CUnit.h>
+
 char values[9][4] = {{32},
                      {'a', 'b', 'c'},
                      {'d', 'e', 'f'},
