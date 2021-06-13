@@ -65,16 +65,6 @@ CMAKE_BINARY_DIR = /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/c
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -84,6 +74,16 @@ edit_cache:
 # Special rule for the target edit_cache
 edit_cache/fast: edit_cache
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named kiir
+
+# Build rule for target.
+kiir: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 kiir
+.PHONY : kiir
+
+# fast build rule for target.
+kiir/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kiir.dir/build.make CMakeFiles/kiir.dir/build
+.PHONY : kiir/fast
+
+#=============================================================================
 # Target rules for targets named progalap
 
 # Build rule for target.
@@ -128,6 +141,19 @@ progalap: cmake_check_build_system
 progalap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/build
 .PHONY : progalap/fast
+
+#=============================================================================
+# Target rules for targets named item
+
+# Build rule for target.
+item: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 item
+.PHONY : item
+
+# fast build rule for target.
+item/fast:
+	$(MAKE) $(MAKESILENT) -f item/CMakeFiles/item.dir/build.make item/CMakeFiles/item.dir/build
+.PHONY : item/fast
 
 beolvaso.o: beolvaso.c.o
 .PHONY : beolvaso.o
@@ -153,36 +179,12 @@ beolvaso.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/beolvaso.c.s
 .PHONY : beolvaso.c.s
 
-item.o: item.c.o
-.PHONY : item.o
-
-# target to build an object file
-item.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/item.c.o
-.PHONY : item.c.o
-
-item.i: item.c.i
-.PHONY : item.i
-
-# target to preprocess a source file
-item.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/item.c.i
-.PHONY : item.c.i
-
-item.s: item.c.s
-.PHONY : item.s
-
-# target to generate assembly for a file
-item.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/item.c.s
-.PHONY : item.c.s
-
 kiir.o: kiir.c.o
 .PHONY : kiir.o
 
 # target to build an object file
 kiir.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kiir.dir/build.make CMakeFiles/kiir.dir/kiir.c.o
 .PHONY : kiir.c.o
 
 kiir.i: kiir.c.i
@@ -190,7 +192,7 @@ kiir.i: kiir.c.i
 
 # target to preprocess a source file
 kiir.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kiir.dir/build.make CMakeFiles/kiir.dir/kiir.c.i
 .PHONY : kiir.c.i
 
 kiir.s: kiir.c.s
@@ -198,7 +200,7 @@ kiir.s: kiir.c.s
 
 # target to generate assembly for a file
 kiir.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/progalap.dir/build.make CMakeFiles/progalap.dir/kiir.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kiir.dir/build.make CMakeFiles/kiir.dir/kiir.c.s
 .PHONY : kiir.c.s
 
 main.o: main.c.o
@@ -233,13 +235,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... item"
+	@echo "... kiir"
 	@echo "... progalap"
 	@echo "... beolvaso.o"
 	@echo "... beolvaso.i"
 	@echo "... beolvaso.s"
-	@echo "... item.o"
-	@echo "... item.i"
-	@echo "... item.s"
 	@echo "... kiir.o"
 	@echo "... kiir.i"
 	@echo "... kiir.s"

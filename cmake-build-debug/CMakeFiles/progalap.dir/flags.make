@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = 
+C_INCLUDES = -I/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/. -I/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/item/.
 
-C_FLAGS = -g -std=gnu99
+C_FLAGS = -std=gnu99
 

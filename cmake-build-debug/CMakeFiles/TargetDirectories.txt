@@ -1,3 +1,7 @@
+/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/kiir.dir
 /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/progalap.dir
-/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/item/CMakeFiles/rebuild_cache.dir
+/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/item/CMakeFiles/item.dir
+/mnt/d/university/sem2/progalap/SZTE-progalap-cash-register/cmake-build-debug/item/CMakeFiles/edit_cache.dir
