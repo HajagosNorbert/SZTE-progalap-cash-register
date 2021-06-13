@@ -1,9 +1,9 @@
 #include "utest_item.h"
 #include "item.h"
-
 #include <CUnit/CUnit.h>
 #include <stdlib.h>
 
+//Norbert
 static void testCountItems() {
     item mockItem1 = {"alma", 300, 2};
     item mockItem2 = {"fakereg", 45, 4};

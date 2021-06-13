@@ -5,9 +5,11 @@
 //Péter
 #ifndef ITEM_H
 #define ITEM_H
-
+//Norbert
+#define ITEM_NAME_LENGTH 20
+//Péter
 typedef struct item {
-    char name[20];
+    char name[ITEM_NAME_LENGTH];
     int price;
     int count;
 } item;

@@ -3,6 +3,10 @@ project(progalap C)
 
 set(CMAKE_C_STANDARD 99)
 
+add_library(debug_tools INTERFACE)
+target_include_directories(debug_tools INTERFACE .)
+
+
 add_subdirectory(item)
 add_subdirectory(kiir)
 add_subdirectory(beolvaso)

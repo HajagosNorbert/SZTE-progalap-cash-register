@@ -3,6 +3,7 @@
 //
 //Péter
 #include "item.h"
+#include "../debug_tools.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,12 +29,12 @@ int countItems(itemNode *head) {
 void addItem(itemNode **head, item item) {
     itemNode *temp, *ptr;
     temp = (itemNode *)malloc(sizeof(itemNode));
-    // temp->item = item;
     temp->item.count = item.count;
     temp->item.price = item.price;
     strcpy(temp->item.name, item.name);
-    // memcpy(&item.name, &(temp->item.name), sizeof(item.name));
     temp->next = NULL;
+
+    msg("So far so good");
 
     if (*head == NULL) {
         *head = temp;

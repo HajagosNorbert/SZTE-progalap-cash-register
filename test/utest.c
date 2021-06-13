@@ -3,6 +3,7 @@
 
 #include <CUnit/Basic.h>
 #include <CUnit/CUnit.h>
+//Norbert
 
 //1. tesztkészlet neve
 //2. fv pointer, amely a készlet összes eleme előtt lefut
