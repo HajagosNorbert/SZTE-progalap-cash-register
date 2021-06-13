@@ -1,4 +1,4 @@
-#include "item.h";
+#include "item.h"
 #include <stdio.h>
 
 void printOutList(itemNode *head) {
