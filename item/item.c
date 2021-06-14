@@ -36,6 +36,7 @@ void addItem(itemNode **head, item item) {
 
     msg("So far so good");
 
+    //ej nincs inicializálva a *head
     if (*head == NULL) {
         *head = temp;
         return;
@@ -46,4 +47,11 @@ void addItem(itemNode **head, item item) {
         ptr = ptr->next;
     }
     ptr->next = temp;
+}
+
+void freeItems(itemNode *head) {
+    if (head->next != NULL) {
+        freeItems(head->next);
+    }
+    free(head);
 }

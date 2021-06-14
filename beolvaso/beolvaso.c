@@ -54,9 +54,9 @@ int checkInputPriceQuan(char row[]) {
     return 1;
 }
 
-itemNode beolvaso() {
+itemNode *beolvaso() {
     //Norbert
-    itemNode *head;
+    itemNode *head = NULL;
     //Péter
     item i1;
     int ok;
@@ -149,6 +149,6 @@ itemNode beolvaso() {
         }
     }
     //Norbert
-    return *head;
+    return head;
     //Péter
 }

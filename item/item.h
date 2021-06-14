@@ -26,5 +26,6 @@ void printItem(item *item);
 //Norbert
 int countItems(itemNode *head);
 void addItem(itemNode **head, item item);
+void freeItems(itemNode *head);
 
 #endif //ITEM_H

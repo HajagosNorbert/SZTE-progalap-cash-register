@@ -13,6 +13,6 @@ int checkInputName(char row[]);
 
 int checkInputPriceQuan(char row[]);
 
-itemNode beolvaso();
+itemNode *beolvaso();
 
 #endif //BEOLVASO_H

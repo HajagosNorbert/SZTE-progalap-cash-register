@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "beolvaso.h"
 #include "item.h"
@@ -6,8 +7,9 @@
 
 int main() {
     //Norbert
-    itemNode firstItem;
+    itemNode *firstItem;
     firstItem = beolvaso();
-    printOutList(&firstItem);
+    // printOutList(firstItem);
+    freeItems(firstItem);
     return 0;
 }
