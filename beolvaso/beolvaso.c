@@ -8,9 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <CUnit/CUnit.h>
+//#include <CUnit/CUnit.h>
 
-char values[9][4] = {{32},
+const int maxValues[9] = {1,3,3,3,3,3,4,3,4};
+
+const char values[9][4] = {{32},
                      {'a', 'b', 'c'},
                      {'d', 'e', 'f'},
                      {'g', 'h', 'i'},
@@ -32,15 +34,16 @@ void printKeyboard(char *msg) {
 int checkInputName(char row[]) {
     int k = 1;
     if (row[0] < '0' || row[0] > '9') {
-        return 0;
+        return -1;
     }
     while (row[k] != '\0') {
         if (row[0] != row[k]) {
-            return 0;
+            return -1;
         }
         k++;
     }
-    return 1;
+    k=(k-1) % maxValues[row[0]-49]+1;
+    return k;
 }
 
 int checkInputPriceQuan(char row[]) {
@@ -52,6 +55,87 @@ int checkInputPriceQuan(char row[]) {
         k++;
     }
     return 1;
+}
+
+void readName(item* i1,int* x, int* ok, int* printer){
+    while(*x==0){
+        char row[10];
+
+        printKeyboard("Kerem a termek nevet...");
+        scanf("%s", row);
+
+        while (!(strcmp(row, "x") == 0 || strcmp(row, "ny") == 0 || checkInputName(row) >= 0)) {
+            if (strcmp(row, "ny") == 0 && strlen(i1->name) == 0) {
+                printf("Can't print. Name is empty.\n");
+            } else if (!(strcmp(row, "x") == 0 || strcmp(row, "x") == 0 || checkInputName(row) >= 0)) {
+                printf("Wrong input! Type again...\n");
+            }
+            printKeyboard("Kerem a termek nevet...");
+            scanf("%s", row);
+        }
+
+        if (strcmp(row, "ny") == 0) {
+            *printer = 1;
+            break;
+        } else if (strcmp(row, "x") == 0) {
+            (*x)++;
+        } else {
+            int k = checkInputName(row);
+            char c[2] = {values[row[0] - 49][k - 1], '\0'};
+            strcat(i1->name, c);
+            printf("Termek neve: %s\n", i1->name);
+        }
+    }
+
+}
+
+void readPrice(item* i1,int* x, int* ok, int* printer){
+
+    while(*x==1){
+
+        char row[6];
+
+        printKeyboard("Kerem a termek arat...");
+        scanf("%s", row);
+
+        while (!(strcmp(row, "x") == 0 || checkInputPriceQuan(row))) {
+            printf("Wrong input! Type again...");
+            printKeyboard("Kerem a termek arat...");
+            scanf("%s", row);
+        }
+
+        if (strcmp(row, "x") == 0) {
+            (*x)++;
+        } else {
+            i1->price = atoi(row);
+        }
+    }
+}
+
+void readQuan(item* i1,int* x, int* ok, int* printer){
+
+    while (*ok==1 && *x == 2) {
+
+        char row[6];
+
+        printKeyboard("Kerem a darabszamot...");
+        scanf("%s", row);
+
+        while (!(strcmp(row, "ok") == 0 || checkInputPriceQuan(row))) {
+            printf("Wrong input! Type again...\n");
+            printKeyboard("Kerem a darabszamot...\n");
+            scanf("%s", row);
+        }
+
+        if (strcmp(row, "ok") == 0) {
+            *ok = 0;
+            *x = 0;
+            printItem(i1);
+        } else {
+            i1->count = atoi(row);
+        }
+    }
+
 }
 
 itemNode *beolvaso() {
@@ -71,75 +155,10 @@ itemNode *beolvaso() {
         ok = 1;
         x = 0;
 
-        while (x == 0) {
-            char row[5];
+        readName(&i1,&x,&ok,&printer);
+        readPrice(&i1,&x,&ok,&printer);
+        readQuan(&i1,&x,&ok,&printer);
 
-            printKeyboard("Kerem a termek nevet...");
-            scanf("%s", row);
-
-            while (!(strcmp(row, "x") == 0 || strcmp(row, "ny") == 0 || checkInputName(row) == 1)) {
-                if (strcmp(row, "ny") == 0 && strlen(i1.name) == 0) {
-                    printf("Can't print. Name is empty.\n");
-                } else if (!(strcmp(row, "x") == 0 || strcmp(row, "x") == 0 || checkInputName(row) == 1)) {
-                    printf("Wrong input! Type again...\n");
-                }
-                printKeyboard("Kerem a termek nevet...");
-                scanf("%s", row);
-            }
-
-            if (strcmp(row, "ny") == 0) {
-                printer = 1;
-                break;
-            } else if (strcmp(row, "x") == 0) {
-                x++;
-            } else {
-                int k = 0;
-                while (row[k] != '\0') {
-                    k++;
-                }
-                char c[2] = {values[row[0] - 49][k - 1], '\0'};
-                strcat(i1.name, c);
-                printf("Termek neve: %s\n", i1.name);
-            }
-        }
-        while (x == 1) {
-            char row[6];
-
-            printKeyboard("Kerem a termek arat...");
-            scanf("%s", row);
-
-            while (!(strcmp(row, "x") == 0 || checkInputPriceQuan(row))) {
-                printf("Wrong input! Type again...");
-                printKeyboard("Kerem a termek arat...");
-                scanf("%s", row);
-            }
-
-            if (strcmp(row, "x") == 0) {
-                x++;
-            } else {
-                i1.price = atoi(row);
-            }
-        }
-        while (ok && x == 2) {
-            char row[6];
-
-            printKeyboard("Kerem a darabszamot...");
-            scanf("%s", row);
-
-            while (!(strcmp(row, "ok") == 0 || checkInputPriceQuan(row))) {
-                printf("Wrong input! Type again...\n");
-                printKeyboard("Kerem a darabszamot...\n");
-                scanf("%s", row);
-            }
-
-            if (strcmp(row, "ok") == 0) {
-                ok = 0;
-                x = 0;
-                printItem(&i1);
-            } else {
-                i1.count = atoi(row);
-            }
-        }
         if (printer == 0) {
             //Norbert
             addItem(&head, i1);

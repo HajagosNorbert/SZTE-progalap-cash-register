@@ -13,6 +13,12 @@ int checkInputName(char row[]);
 
 int checkInputPriceQuan(char row[]);
 
+void readName(item* i1,int* x, int* ok, int* printer);
+
+void readPrice(item* i1,int* x, int* ok, int* printer);
+
+void readQuan(item* i1,int* x, int* ok, int* printer);
+
 itemNode *beolvaso();
 
 #endif //BEOLVASO_H
