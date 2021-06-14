@@ -9,7 +9,7 @@ int main() {
     //Norbert
     itemNode *firstItem;
     firstItem = beolvaso();
-    // printOutList(firstItem);
+    printOutList(firstItem);
     freeItems(firstItem);
     return 0;
 }
