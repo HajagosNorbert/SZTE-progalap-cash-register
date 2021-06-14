@@ -2,7 +2,6 @@
 #include <stdio.h>
 
 void printOutList(itemNode *head) {
-
     itemNode *current = head;
     while (current != NULL) {
         printItem(&(current->item));

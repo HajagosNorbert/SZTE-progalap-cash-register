@@ -7,13 +7,13 @@ void markCurrentLine(int line) {
     printf("[%d]\n", line);
 }
 
-void addMessageToCurrentLine(int line, const char *message) {
-    printf("[%d] %s\n", line, message);
+void addMessageToCurrentLine(const char *file, int line, const char *message) {
+    printf("%s at line [%d]: %s\n", file, line, message);
 }
 
 #ifdef DEBUG
 #define mark markCurrentLine(__LINE__)
-#define msg(m) addMessageToCurrentLine(__LINE__, m)
+#define msg(m) addMessageToCurrentLine(__FILE__, __LINE__, m)
 #else
 #define mark
 #define msg(m)
