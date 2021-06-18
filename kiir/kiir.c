@@ -12,7 +12,7 @@ void printToFileItem(item *item) {
     int DbHossz = snprintf( NULL, 0, "%d", item->count );
     int ArDbHossz=7+ ArHossz+DbHossz;
 
-    if(nevHossz<(szelesseg-ArDbHossz)){
+    if(nevHossz<(szelesseg-ArDbHossz)){//minden kifer egy sorban
         fprintf(out,"%s", item->name);
         for(int i=0; i<(szelesseg-nevHossz-ArDbHossz);i++){
             fprintf(out,"_");
@@ -22,20 +22,27 @@ void printToFileItem(item *item) {
     } else if(nevHossz>szelesseg){
         char *nameString=item->name;
         char *nameStringSplit= strtok(nameString," ");
+        printf("%s", nameStringSplit);
         while (nameStringSplit != NULL)
         {
-            fprintf(out,"%s", nameStringSplit);
-            for(int i=0; i<(szelesseg-strlen(nameStringSplit));i++){
-                fprintf(out,"_");
+            if( strlen(nameStringSplit)<szelesseg){
+                fprintf(out,"%s", nameStringSplit);
+                for(int i=0; i<(szelesseg-strlen(nameStringSplit));i++){
+                    fprintf(out,"_");
+                }
+                fprintf(out,"<br>");
+                nameStringSplit = strtok(NULL, " ");
+            } else{
+                fprintf(out,"HIBAS TETELNEV");
+                fprintf(out,"<br>");
+                break;
             }
-            fprintf(out,"<br>");
-            nameStringSplit = strtok(NULL, " ");
         }
         for(int i=0; i<(szelesseg-ArDbHossz);i++){
             fprintf(out,"_");
         }
         fprintf(out,"%d db %dFt<br>",  item->count, item->price);
-    } else{
+    } else {//szo kifer egy sorban de az ar mar nem fel oda
         fprintf(out,"%s", item->name);
         for(int i=0; i<(szelesseg-nevHossz);i++){
             fprintf(out,"_");
