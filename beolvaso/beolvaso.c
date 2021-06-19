@@ -1,5 +1,5 @@
 //
-// Created by Asus on 6/5/2021.
+// Péter
 //
 
 #include "beolvaso.h"
@@ -8,7 +8,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-//#include <CUnit/CUnit.h>
+//#include <CUnit/CUnit.h> //Norbert
+
+#define BUFFER 32
 
 const int maxValues[9] = {1,3,3,3,3,3,4,3,4};
 
@@ -57,12 +59,30 @@ int checkInputPriceQuan(char row[]) {
     return 1;
 }
 
+char *readString()
+{
+    char *str = malloc(sizeof(char) * BUFFER), *err;
+    int pos;
+    for(pos = 0; str != NULL && (str[pos] = getchar()) != '\n'; pos++)
+    {
+        if(pos % BUFFER == BUFFER - 1)
+        {
+            if((err = realloc(str, sizeof(char) * (BUFFER + pos + 1))) == NULL)
+                free(str);
+            str = err;
+        }
+    }
+    if(str != NULL)
+        str[pos] = '\0';
+    return str;
+}
+
 void readName(item* i1,int* x, int* ok, int* printer){
     while(*x==0){
-        char row[10];
+        char *row = NULL;
 
         printKeyboard("Kerem a termek nevet...");
-        scanf("%s", row);
+        row=readString();
 
         while (!(strcmp(row, "x") == 0 || strcmp(row, "ny") == 0 || checkInputName(row) >= 0)) {
             if (strcmp(row, "ny") == 0 && strlen(i1->name) == 0) {
@@ -71,7 +91,7 @@ void readName(item* i1,int* x, int* ok, int* printer){
                 printf("Wrong input! Type again...\n");
             }
             printKeyboard("Kerem a termek nevet...");
-            scanf("%s", row);
+            row=readString();
         }
 
         if (strcmp(row, "ny") == 0) {
@@ -85,6 +105,7 @@ void readName(item* i1,int* x, int* ok, int* printer){
             strcat(i1->name, c);
             printf("Termek neve: %s\n", i1->name);
         }
+        free(row);
     }
 
 }
@@ -93,15 +114,15 @@ void readPrice(item* i1,int* x, int* ok, int* printer){
 
     while(*x==1){
 
-        char row[6];
+        char *row = NULL;
 
         printKeyboard("Kerem a termek arat...");
-        scanf("%s", row);
+        row=readString();
 
         while (!(strcmp(row, "x") == 0 || checkInputPriceQuan(row))) {
             printf("Wrong input! Type again...");
             printKeyboard("Kerem a termek arat...");
-            scanf("%s", row);
+            row=readString();
         }
 
         if (strcmp(row, "x") == 0) {
@@ -109,6 +130,7 @@ void readPrice(item* i1,int* x, int* ok, int* printer){
         } else {
             i1->price = atoi(row);
         }
+        free(row);
     }
 }
 
@@ -116,15 +138,15 @@ void readQuan(item* i1,int* x, int* ok, int* printer){
 
     while (*ok==1 && *x == 2) {
 
-        char row[6];
+        char *row = NULL;
 
         printKeyboard("Kerem a darabszamot...");
-        scanf("%s", row);
+        row=readString();
 
         while (!(strcmp(row, "ok") == 0 || checkInputPriceQuan(row))) {
             printf("Wrong input! Type again...\n");
             printKeyboard("Kerem a darabszamot...\n");
-            scanf("%s", row);
+            row=readString();
         }
 
         if (strcmp(row, "ok") == 0) {
@@ -134,6 +156,7 @@ void readQuan(item* i1,int* x, int* ok, int* printer){
         } else {
             i1->count = atoi(row);
         }
+        free(row);
     }
 
 }

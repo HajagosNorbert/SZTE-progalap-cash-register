@@ -3,6 +3,6 @@
 
 #include "item.h"
 
-void printOutList(itemNode *head);
+void printOutList(itemNode *head,char *blockNumber);
 
 #endif //KIIR_H

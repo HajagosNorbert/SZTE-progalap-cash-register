@@ -56,7 +56,7 @@ void printToFileItem(item *item) {
     ar+=(item->count)*(item->price);
 }
 
-void printOutList(itemNode *head) {
+void printOutList(itemNode *head,char *blockNumber) {
     itemNode *current = head;
 
     printf("\nLista hossza: %d\n", countItems(head));
