@@ -8,7 +8,6 @@
 //Viktor
 static  FILE* out;
 static int ar=0;
-//static int szelesseg=20;
 char *substring(char *string, int position, int length)
 {
     char *p;
@@ -25,7 +24,6 @@ char *substring(char *string, int position, int length)
         string++;
     }
     *(p+c) = '\0';
-
     return p;
 }
 void printToFileItem(item *item,int szelesseg, int blockNumber) {
@@ -54,20 +52,14 @@ void printToFileItem(item *item,int szelesseg, int blockNumber) {
                 fprintf(out,"<br>");
                 nameStringSplit = strtok(NULL, " ");
             } else{
-                int splitSzam=strlen(nameStringSplit)/szelesseg;
-                int i=0;
                 int position=0;
-                while (i<splitSzam){
-                    printf("hello\n");
-                    char *split= substring(nameStringSplit,position,szelesseg-1);
+                while (position<strlen(nameStringSplit)){
+                    char *split= substring(nameStringSplit,position,szelesseg-3);
                     fprintf(out,"%s",split);
                     fprintf(out,"<br>");
-                    position+=szelesseg-1;
-                    i++;
+                    position=position+szelesseg-3;
                 }
-                fprintf(out,"HIBAS TETELNEV");
-                fprintf(out,"<br>");
-                break;
+                nameStringSplit = strtok(NULL, " ");
             }
         }
         for(int i=0; i<(szelesseg-ArDbHossz);i++){
@@ -91,20 +83,20 @@ void printToFileItem(item *item,int szelesseg, int blockNumber) {
 void printOutList(itemNode *head,int szelesseg, int blockNumber) {
     itemNode *current = head;
     printf("\nLista hossza: %d\n", countItems(head));
-    out= fopen("nyugta.html","w");
+    char filename[sizeof "Nyugta100.html"];
+    sprintf(filename,"Nyugta%03d.html",blockNumber);
+    out= fopen(filename,"w");
     fprintf(out,"<!DOCTYPE html><html lang=\"hu\"><head><meta charset=\"UTF-8\"> <meta name=\"author\" content=\"Fajka Viktor, Hajagos Norbert és Zabos Péter\"/>");
     fprintf(out,"<title>Nyugta</title>");
     fprintf(out,"<style>");
     fprintf(out,"#ar{text-align: right;}");
     fprintf(out,"#osszeg{text-align: right;}");
-
     fprintf(out,"</style>");
     fprintf(out,"</head>");
     fprintf(out,"<body>");
     fprintf(out,"<div id=\"nyugta\">");
 
-    fprintf(out,"<h2>Nyugta</h2>");
-    //TODO: hanyadik szamla
+    fprintf(out,"<h2>Nyugta %d</h2>",blockNumber);
     while (current != NULL) {
         printToFileItem(&(current->item), szelesseg, blockNumber);
         current = current->next;
