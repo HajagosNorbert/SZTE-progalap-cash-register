@@ -32,7 +32,6 @@ void printKeyboard(const char *msg) {
            "|1(space)  |2(a/b/c) |3(d/e/f)  | Ok |\n"
            "|4(g/h/i)  |5(j/k/l) |6(m/n/o)  | X  |\n"
            "|7(p/q/r/s)|8(t/u/v) |9(w/x/y/z)| Ny |\n");
-    printf("\n");
 }
 
 int checkInputName(const char row[]) {
@@ -85,15 +84,17 @@ void readName(item* i1,int* x, int* ok, int* printer){
 
         printKeyboard("Kerem a termek nevet...");
         row=readString();
+        printf("\n");
 
-        while (!(strcmp(row, "x") == 0 || strcmp(row, "ny") == 0 || checkInputName(row) >= 0)) {
+        while (!(strcmp(row, "X") == 0 || strcmp(row, "Ny") == 0 || checkInputName(row) >= 0)) {
             WIM;
             printf("Termek neve: %s\n", i1->name);
             printKeyboard("Kerem a termek nevet...");
             row=readString();
+            printf("\n");
         }
 
-        if (strcmp(row, "ny") == 0) {
+        if (strcmp(row, "Ny") == 0) {
             if(strlen(i1->name)==0){
                 *printer = 1;
                 break;
@@ -101,8 +102,12 @@ void readName(item* i1,int* x, int* ok, int* printer){
                 printf("Nem lehet nyomtatni! A termek neve nem ures...\n");
                 printf("Termek neve: %s\n", i1->name);
             }
-        } else if (strcmp(row, "x") == 0) {
-            (*x)++;
+        } else if (strcmp(row, "X") == 0) {
+            if(strlen(i1->name)!=0){
+                (*x)++;
+            }else{
+                printf("A termek neve ures!\n");
+            }
         } else {
             if(strlen(i1->name)<ITEM_NAME_LENGTH) {
                 int k = checkInputName(row);
@@ -120,7 +125,7 @@ void readName(item* i1,int* x, int* ok, int* printer){
 
 }
 
-void readPrice(item* i1,int* x, int* ok, int* printer){
+void readPrice(item* i1,int* x){
 
     while(*x==1){
 
@@ -128,27 +133,35 @@ void readPrice(item* i1,int* x, int* ok, int* printer){
 
         printKeyboard("Kerem a termek arat...");
         row=readString();
+        printf("\n");
 
-        while (!(strcmp(row, "x") == 0 || checkInputPriceQuan(row))) {
+        while (!(strcmp(row, "X") == 0 || checkInputPriceQuan(row))) {
             WIM;
             printKeyboard("Kerem a termek arat...");
             row=readString();
+            printf("\n");
         }
 
-        if (strcmp(row, "x") == 0) {
-            (*x)++;
+        if (strcmp(row, "X") == 0) {
+            if(i1->price!=0){
+                (*x)++;
+            }else{
+                printf("Termek ara nem lehet 0!\n");
+            }
         } else {
             if(strlen(row)<9){
                 i1->price = atoi(row);
+                printf("A termek ara: %dFt\n",i1->price);
             }else {
                 TBNM;
+                printf("A termek ara: %dFt\n",i1->price);
             }
         }
         free(row);
     }
 }
 
-void readQuan(item* i1,int* x, int* ok, int* printer){
+void readQuan(item* i1,int* x, int* ok){
 
     while (*ok==1 && *x == 2) {
 
@@ -156,22 +169,30 @@ void readQuan(item* i1,int* x, int* ok, int* printer){
 
         printKeyboard("Kerem a darabszamot...");
         row=readString();
+        printf("\n");
 
-        while (!(strcmp(row, "ok") == 0 || checkInputPriceQuan(row))) {
+        while (!(strcmp(row, "Ok") == 0 || checkInputPriceQuan(row))) {
             WIM;
             printKeyboard("Kerem a darabszamot...");
             row=readString();
+            printf("\n");
         }
 
-        if (strcmp(row, "ok") == 0) {
-            *ok = 0;
-            *x = 0;
-            printItem(i1);
+        if (strcmp(row, "Ok") == 0) {
+            if(i1->count!=0){
+                *ok = 0;
+                *x = 0;
+                printItem(i1);
+            }else{
+                printf("Nem vehet 0 darabot!\n");
+            }
         } else {
             if(strlen(row)<=9){
                 i1->count = atoi(row);
+                printItem(i1);
             }else {
                 TBNM;
+                printItem(i1);
             }
         }
         free(row);
@@ -184,9 +205,9 @@ itemNode *beolvaso() {
     itemNode *head = NULL;
     //Péter
     item i1;
-    int ok;
-    int x;
-    int printer = 0;
+    int ok; //boolean
+    int x; //0->2
+    int printer = 0; //boolean
 
     while (printer == 0) {
 
@@ -197,8 +218,8 @@ itemNode *beolvaso() {
         x = 0;
 
         readName(&i1,&x,&ok,&printer);
-        readPrice(&i1,&x,&ok,&printer);
-        readQuan(&i1,&x,&ok,&printer);
+        readPrice(&i1,&x);
+        readQuan(&i1,&x,&ok);
 
         if (printer == 0) {
             //Norbert
