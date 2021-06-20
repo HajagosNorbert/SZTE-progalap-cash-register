@@ -11,6 +11,8 @@
 //#include <CUnit/CUnit.h> //Norbert
 
 #define BUFFER 32
+#define WIM printf("Rossz input! Irjon ujra...\n") //wrong input message
+#define TBNM printf("Tul nagy szam...\n") //too big number message
 
 const int maxValues[9] = {1,3,3,3,3,3,4,3,4};
 
@@ -24,7 +26,7 @@ const char values[9][4] = {{32},
                      {'t', 'u', 'v'},
                      {'w', 'x', 'y', 'z'}};
 
-void printKeyboard(char *msg) {
+void printKeyboard(const char *msg) {
     printf("%s\n", msg);
     printf("_______________________________________\n"
            "|1(space)  |2(a/b/c) |3(d/e/f)  | Ok |\n"
@@ -33,7 +35,7 @@ void printKeyboard(char *msg) {
     printf("\n");
 }
 
-int checkInputName(char row[]) {
+int checkInputName(const char row[]) {
     int k = 1;
     if (row[0] < '0' || row[0] > '9') {
         return -1;
@@ -48,7 +50,7 @@ int checkInputName(char row[]) {
     return k;
 }
 
-int checkInputPriceQuan(char row[]) {
+int checkInputPriceQuan(const char row[]) {
     int k = 0;
     while (row[k] != '\0') {
         if (row[k] < '0' || row[k] > '9') {
@@ -85,26 +87,34 @@ void readName(item* i1,int* x, int* ok, int* printer){
         row=readString();
 
         while (!(strcmp(row, "x") == 0 || strcmp(row, "ny") == 0 || checkInputName(row) >= 0)) {
-            if (strcmp(row, "ny") == 0 && strlen(i1->name) == 0) {
-                printf("Can't print. Name is empty.\n");
-            } else if (!(strcmp(row, "x") == 0 || strcmp(row, "x") == 0 || checkInputName(row) >= 0)) {
-                printf("Wrong input! Type again...\n");
-            }
+            WIM;
+            printf("Termek neve: %s\n", i1->name);
             printKeyboard("Kerem a termek nevet...");
             row=readString();
         }
 
         if (strcmp(row, "ny") == 0) {
-            *printer = 1;
-            break;
+            if(strlen(i1->name)==0){
+                *printer = 1;
+                break;
+            }else{
+                printf("Nem lehet nyomtatni! A termek neve nem ures...\n");
+                printf("Termek neve: %s\n", i1->name);
+            }
         } else if (strcmp(row, "x") == 0) {
             (*x)++;
         } else {
-            int k = checkInputName(row);
-            char c[2] = {values[row[0] - 49][k - 1], '\0'};
-            strcat(i1->name, c);
-            printf("Termek neve: %s\n", i1->name);
+            if(strlen(i1->name)<ITEM_NAME_LENGTH) {
+                int k = checkInputName(row);
+                char c[2] = {values[row[0] - 49][k - 1], '\0'};
+                strcat(i1->name, c);
+                printf("Termek neve: %s\n", i1->name);
+            }else{
+                printf("Elerte a nev maximalis meretet... Nyomjon X-et!\n");
+                printf("Termek neve: %s\n", i1->name);
+            }
         }
+
         free(row);
     }
 
@@ -120,7 +130,7 @@ void readPrice(item* i1,int* x, int* ok, int* printer){
         row=readString();
 
         while (!(strcmp(row, "x") == 0 || checkInputPriceQuan(row))) {
-            printf("Wrong input! Type again...");
+            WIM;
             printKeyboard("Kerem a termek arat...");
             row=readString();
         }
@@ -128,7 +138,11 @@ void readPrice(item* i1,int* x, int* ok, int* printer){
         if (strcmp(row, "x") == 0) {
             (*x)++;
         } else {
-            i1->price = atoi(row);
+            if(strlen(row)<9){
+                i1->price = atoi(row);
+            }else {
+                TBNM;
+            }
         }
         free(row);
     }
@@ -144,8 +158,8 @@ void readQuan(item* i1,int* x, int* ok, int* printer){
         row=readString();
 
         while (!(strcmp(row, "ok") == 0 || checkInputPriceQuan(row))) {
-            printf("Wrong input! Type again...\n");
-            printKeyboard("Kerem a darabszamot...\n");
+            WIM;
+            printKeyboard("Kerem a darabszamot...");
             row=readString();
         }
 
@@ -154,7 +168,11 @@ void readQuan(item* i1,int* x, int* ok, int* printer){
             *x = 0;
             printItem(i1);
         } else {
-            i1->count = atoi(row);
+            if(strlen(row)<=9){
+                i1->count = atoi(row);
+            }else {
+                TBNM;
+            }
         }
         free(row);
     }

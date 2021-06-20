@@ -6,7 +6,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 //Norbert
-#define ITEM_NAME_LENGTH 20
+#define ITEM_NAME_LENGTH 18
 //Péter
 typedef struct item {
     char name[ITEM_NAME_LENGTH];
