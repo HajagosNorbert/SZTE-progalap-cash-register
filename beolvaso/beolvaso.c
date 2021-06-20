@@ -86,7 +86,7 @@ void readName(item* i1,int* x, int* ok, int* printer){
         row=readString();
         printf("\n");
 
-        while (!(strcmp(row, "X") == 0 || strcmp(row, "Ny") == 0 || checkInputName(row) >= 0)) {
+        while (!(strcmp(row, "X") == 0 || strcmp(row, "Ny") == 0 || checkInputName(row) >= 0 || (strcmp(row,"Exit")==0))) {
             WIM;
             printf("Termek neve: %s\n", i1->name);
             printKeyboard("Kerem a termek nevet...");
@@ -108,7 +108,10 @@ void readName(item* i1,int* x, int* ok, int* printer){
             }else{
                 printf("A termek neve ures!\n");
             }
-        } else {
+        }else if(strcmp(row,"Exit")==0){
+            free(row);
+            exit(0);
+        }else {
             if(strlen(i1->name)<ITEM_NAME_LENGTH) {
                 int k = checkInputName(row);
                 char c[2] = {values[row[0] - 49][k - 1], '\0'};
