@@ -12,6 +12,7 @@ target_include_directories(debug_tools INTERFACE .)
 add_subdirectory(item)
 add_subdirectory(kiir)
 add_subdirectory(beolvaso)
+add_subdirectory(test)
 
 add_executable(progalap main.c)
 
