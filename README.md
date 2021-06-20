@@ -1,0 +1,13 @@
+## Lefordítás és futtatás
+```
+cmake -H. -Bbuild/;
+make -C build/;
+./build/progalap;
+```
+## Teszt futtatása
+```
+./build/test/utest
+```
+
+## Használat
+Megegyezik a követelmények PDF-ben megszabott irányítással
