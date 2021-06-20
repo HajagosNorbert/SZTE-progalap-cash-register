@@ -88,7 +88,7 @@ void printToFileItem(item *item,int szelesseg, int blockNumber) {
     ar+=(item->count)*(item->price);
 }
 
-void printOutList(itemNode *head,int szelesseg, int int nyugtaHossz, int blockNumber) {
+void printOutList(itemNode *head,int szelesseg, int nyugtaHossz, int blockNumber) {
     itemNode *current = head;
     printf("\nLista hossza: %d\n", countItems(head));
     out= fopen("nyugta.html","w");
