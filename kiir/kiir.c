@@ -2,11 +2,33 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <malloc.h>
+#include <assert.h>
 
+//Viktor
 static  FILE* out;
 static int ar=0;
-static int szelesseg=20;
-void printToFileItem(item *item) {
+//static int szelesseg=20;
+char *substring(char *string, int position, int length)
+{
+    char *p;
+    int c;
+    p = malloc(length+1);
+
+    if (p == NULL)
+    {
+        exit(1);
+    }
+    for (c = 0; c < length; c++)
+    {
+        *(p+c) = *(string+position-1);
+        string++;
+    }
+    *(p+c) = '\0';
+
+    return p;
+}
+void printToFileItem(item *item,int szelesseg, int blockNumber) {
     int nevHossz=strlen(item->name);
     int ArHossz = snprintf( NULL, 0, "%d", item->price );
     int DbHossz = snprintf( NULL, 0, "%d", item->count );
@@ -18,7 +40,6 @@ void printToFileItem(item *item) {
             fprintf(out,"_");
         }
         fprintf(out,"%d db %dFt<br>",  item->count, item->price);
-
     } else if(nevHossz>szelesseg){
         char *nameString=item->name;
         char *nameStringSplit= strtok(nameString," ");
@@ -33,6 +54,17 @@ void printToFileItem(item *item) {
                 fprintf(out,"<br>");
                 nameStringSplit = strtok(NULL, " ");
             } else{
+                int splitSzam=strlen(nameStringSplit)/szelesseg;
+                int i=0;
+                int position=0;
+                while (i<splitSzam){
+                    printf("hello\n");
+                    char *split= substring(nameStringSplit,position,szelesseg-1);
+                    fprintf(out,"%s",split);
+                    fprintf(out,"<br>");
+                    position+=szelesseg-1;
+                    i++;
+                }
                 fprintf(out,"HIBAS TETELNEV");
                 fprintf(out,"<br>");
                 break;
@@ -56,9 +88,8 @@ void printToFileItem(item *item) {
     ar+=(item->count)*(item->price);
 }
 
-void printOutList(itemNode *head,char *blockNumber) {
+void printOutList(itemNode *head,int szelesseg, int int nyugtaHossz, int blockNumber) {
     itemNode *current = head;
-
     printf("\nLista hossza: %d\n", countItems(head));
     out= fopen("nyugta.html","w");
     fprintf(out,"<!DOCTYPE html><html lang=\"hu\"><head><meta charset=\"UTF-8\"> <meta name=\"author\" content=\"Fajka Viktor, Hajagos Norbert és Zabos Péter\"/>");
@@ -75,7 +106,7 @@ void printOutList(itemNode *head,char *blockNumber) {
     fprintf(out,"<h2>Nyugta</h2>");
     //TODO: hanyadik szamla
     while (current != NULL) {
-        printToFileItem(&(current->item));
+        printToFileItem(&(current->item), blockNumber);
         current = current->next;
     }
     fprintf(out,"<br>");
