@@ -7,17 +7,22 @@
 
 int main(int argc, char *argv[]) {
     //Norbert
-    char *nyugtaHossz;
+    int nyugtaHossz;
     if (argc == 2) {
-        nyugtaHossz = argv[1];
+        nyugtaHossz = atoi(argv[1]);
     } else {
-        fprintf(stdout, "Adjon meg egy argumentumot, ami a nyugta hosszat jelzi! ");
-        nyugtaHossz = "20";
+        fprintf(stdout, "Adjon meg egy argumentumot, ami a nyugta hosszat jelzi!\n");
+        nyugtaHossz = 20;
     }
 
-    itemNode *firstItem;
-    firstItem = beolvaso();
-    printOutList(firstItem, nyugtaHossz);
-    freeItems(firstItem);
+    int blockNumber=1;
+    while(1){
+        itemNode *firstItem;
+        firstItem = beolvaso();
+        printOutList(firstItem, nyugtaHossz, blockNumber);
+        freeItems(firstItem);
+        blockNumber++;
+    }
+
     return 0;
 }

@@ -9,7 +9,7 @@
 #include <string.h>
 
 void printItem(item *item) {
-    printf("%s X %d %d Ft\n", item->name, item->count, item->price);
+    printf("%s X %d %dFt\n", item->name, item->count, item->price);
 }
 
 //Norbert

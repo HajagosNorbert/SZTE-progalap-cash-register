@@ -2,11 +2,31 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
+#include <malloc.h>
+#include <assert.h>
 
+//Viktor
 static  FILE* out;
 static int ar=0;
-static int szelesseg=20;
-void printToFileItem(item *item) {
+char *substring(char *string, int position, int length)
+{
+    char *p;
+    int c;
+    p = malloc(length+1);
+
+    if (p == NULL)
+    {
+        return 0;
+    }
+    for (c = 0; c < length; c++)
+    {
+        *(p+c) = *(string+position-1);
+        string++;
+    }
+    *(p+c) = '\0';
+    return p;
+}
+void printToFileItem(item *item,int szelesseg, int blockNumber) {
     int nevHossz=strlen(item->name);
     int ArHossz = snprintf( NULL, 0, "%d", item->price );
     int DbHossz = snprintf( NULL, 0, "%d", item->count );
@@ -18,7 +38,6 @@ void printToFileItem(item *item) {
             fprintf(out,"_");
         }
         fprintf(out,"%d db %dFt<br>",  item->count, item->price);
-
     } else if(nevHossz>szelesseg){
         char *nameString=item->name;
         char *nameStringSplit= strtok(nameString," ");
@@ -33,9 +52,14 @@ void printToFileItem(item *item) {
                 fprintf(out,"<br>");
                 nameStringSplit = strtok(NULL, " ");
             } else{
-                fprintf(out,"HIBAS TETELNEV");
-                fprintf(out,"<br>");
-                break;
+                int position=0;
+                while (position<strlen(nameStringSplit)){
+                    char *split= substring(nameStringSplit,position,szelesseg-3);
+                    fprintf(out,"%s",split);
+                    fprintf(out,"<br>");
+                    position=position+szelesseg-3;
+                }
+                nameStringSplit = strtok(NULL, " ");
             }
         }
         for(int i=0; i<(szelesseg-ArDbHossz);i++){
@@ -56,26 +80,25 @@ void printToFileItem(item *item) {
     ar+=(item->count)*(item->price);
 }
 
-void printOutList(itemNode *head,char *blockNumber) {
+void printOutList(itemNode *head,int szelesseg, int blockNumber) {
     itemNode *current = head;
-
     printf("\nLista hossza: %d\n", countItems(head));
-    out= fopen("nyugta.html","w");
+    char filename[sizeof "Nyugta100.html"];
+    sprintf(filename,"Nyugta%03d.html",blockNumber);
+    out= fopen(filename,"w");
     fprintf(out,"<!DOCTYPE html><html lang=\"hu\"><head><meta charset=\"UTF-8\"> <meta name=\"author\" content=\"Fajka Viktor, Hajagos Norbert és Zabos Péter\"/>");
     fprintf(out,"<title>Nyugta</title>");
     fprintf(out,"<style>");
     fprintf(out,"#ar{text-align: right;}");
     fprintf(out,"#osszeg{text-align: right;}");
-
     fprintf(out,"</style>");
     fprintf(out,"</head>");
     fprintf(out,"<body>");
     fprintf(out,"<div id=\"nyugta\">");
 
-    fprintf(out,"<h2>Nyugta</h2>");
-    //TODO: hanyadik szamla
+    fprintf(out,"<h2>Nyugta %d</h2>",blockNumber);
     while (current != NULL) {
-        printToFileItem(&(current->item));
+        printToFileItem(&(current->item), szelesseg, blockNumber);
         current = current->next;
     }
     fprintf(out,"<br>");
