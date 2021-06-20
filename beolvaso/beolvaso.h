@@ -7,11 +7,11 @@
 
 #include "item.h"
 
-void printKeyboard(char *msg);
+void printKeyboard(const char *msg);
 
-int checkInputName(char row[]);
+int checkInputName(const char row[]);
 
-int checkInputPriceQuan(char row[]);
+int checkInputPriceQuan(const char row[]);
 
 void readName(item* i1,int* x, int* ok, int* printer);
 
