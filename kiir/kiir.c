@@ -17,7 +17,7 @@ char *substring(char *string, int position, int length)
 
     if (p == NULL)
     {
-        exit(1);
+        return 0;
     }
     for (c = 0; c < length; c++)
     {
@@ -88,7 +88,7 @@ void printToFileItem(item *item,int szelesseg, int blockNumber) {
     ar+=(item->count)*(item->price);
 }
 
-void printOutList(itemNode *head,int szelesseg, int nyugtaHossz, int blockNumber) {
+void printOutList(itemNode *head,int szelesseg, int blockNumber) {
     itemNode *current = head;
     printf("\nLista hossza: %d\n", countItems(head));
     out= fopen("nyugta.html","w");
@@ -106,7 +106,7 @@ void printOutList(itemNode *head,int szelesseg, int nyugtaHossz, int blockNumber
     fprintf(out,"<h2>Nyugta</h2>");
     //TODO: hanyadik szamla
     while (current != NULL) {
-        printToFileItem(&(current->item), blockNumber);
+        printToFileItem(&(current->item), szelesseg, blockNumber);
         current = current->next;
     }
     fprintf(out,"<br>");
