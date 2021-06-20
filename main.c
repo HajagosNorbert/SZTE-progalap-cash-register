@@ -16,6 +16,7 @@ int main(int argc, char *argv[]) {
     }
 
     int blockNumber=1;
+
     while(1){
         itemNode *firstItem;
         firstItem = beolvaso();
@@ -23,6 +24,5 @@ int main(int argc, char *argv[]) {
         freeItems(firstItem);
         blockNumber++;
     }
-
     return 0;
 }
