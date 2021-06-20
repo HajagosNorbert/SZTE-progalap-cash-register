@@ -18,6 +18,17 @@ static void testCountItems() {
     mockNode1->next = mockNode2;
     mockNode2->item = mockItem2;
     CU_ASSERT_EQUAL(countItems(mockNode1), 2);
+    freeItems(mockNode1);
+}
+
+static void testAddItem() {
+    item mockItem1 = {"alma", 300, 2};
+    item mockItem2 = {"fakereg", 45, 4};
+
+    itemNode *mockNode1;
+    addItem(&mockNode1, mockItem2);
+
+    CU_ASSERT_EQUAL(mockNode1->item.count, 4);
 }
 
 // static void test_rgbpic_create() {
@@ -63,7 +74,7 @@ static void testCountItems() {
 // {név, tesztesetet megalósító függvény}
 CU_TestInfo itemTests[] = {
     {"Counting items", testCountItems},
-    // {"creation", test_rgbpic_create},
+    {"Adding items", testAddItem},
     // {"gray conversion", test_rgbpic_rgb_to_gray},
     // {"coordinate computation", test_rgbpic_coord},
 
