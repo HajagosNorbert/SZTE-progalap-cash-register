@@ -227,6 +227,11 @@ itemNode *beolvaso() {
             //Péter
             x = 0;
             ok = 1;
+        }else{
+            if(head==NULL){
+                printf("Nem lehet nyomtatni! 0 hosszu a lista...\n") ;
+                printer=0;
+            }
         }
     }
     //Norbert

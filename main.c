@@ -16,9 +16,13 @@ int main(int argc, char *argv[]) {
     }
 
     int blockNumber=1;
-    itemNode *firstItem;
-    firstItem = beolvaso();
-    printOutList(firstItem, nyugtaHossz, blockNumber);
-    freeItems(firstItem);
+    while(1){
+        itemNode *firstItem;
+        firstItem = beolvaso();
+        printOutList(firstItem, nyugtaHossz, blockNumber);
+        freeItems(firstItem);
+        blockNumber++;
+    }
+
     return 0;
 }
